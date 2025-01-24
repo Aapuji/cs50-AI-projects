@@ -62,10 +62,8 @@ def transition_model(corpus, page, damping_factor):
     for key in corpus.keys():
         if key in corpus[page]:
             prob_dist[key] = damping_factor / len(corpus[page]) + (1 - damping_factor)
-        elif key == page:
-            prob_dist[key] = 0.05
         else:
-            prob_dist[key] = 0
+            prob_dist[key] = 1 - damping_factor
     
     return prob_dist
 
